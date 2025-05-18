@@ -1,0 +1,25 @@
+{
+  "description": "Change Caps Lock to Hyper and switch 中/英 with 鼠须管",
+  "manipulators": [
+      {
+          "description": "caps_lock -> left_shift+left_option+left_command+left_control(Hyper)",
+          "from": {
+              "key_code": "caps_lock",
+              "modifiers": { "optional": [] }
+          },
+          "to": [
+              {
+                  "key_code": "left_shift",
+                  "modifiers": ["left_option", "left_command", "left_control"]
+              }
+          ],
+          "to_if_alone": [
+              {
+                  "key_code": "backslash",
+                  "modifiers": ["left_control"]
+              }
+          ],
+          "type": "basic"
+      }
+  ]
+}
