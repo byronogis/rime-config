@@ -1,0 +1,76 @@
+patch:
+  schema/name: 小鹤双拼
+
+  # 更改初始状态
+  switches:
+    - name: ascii_mode
+      reset: 0
+      states: [ 中文, 西文 ]
+    - name: full_shape
+      reset: 0
+      states: [ 半角, 全角 ]
+    - name: simplification
+      reset: 1
+      states: [ 漢字, 汉字 ]
+    - name: ascii_punct
+      reset: 1
+      states: [ 。，, ．， ]
+
+  # 本地扩展
+  engine/translators/+:
+    - lua_translator@*date_translator
+
+  # 符号扩展改为 V 开头
+  recognizer/patterns/punct: "^V([0-9]0?|[A-Za-z]+)$"
+  punctuator/symbols:
+    __include: symbols_caps_v:/symbols
+
+  # 笔画拆字 uU
+  reverse_lookup/prefix: uU
+  recognizer/patterns/reverse_lookup: "^uU[a-z]*'?$"
+
+  # 词库
+  translator/dictionary: byrons
+
+  # 自定义短语
+  custom_phrase:
+    dictionary: ""
+    user_dict: custom_phrase
+    db_class: stabledb
+    enable_completion: false
+    enable_sentence: false
+    initial_quality: 99
+
+  # 使大写字母参与拼写
+  speller/alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
+  speller/algebra:
+    - erase/^xx$/
+    - derive/^([jqxy])u$/$1v/
+    - derive/^([aoe])([ioun])$/$1$1$2/
+    - xform/^([aoe])(ng)?$/$1$1$2/
+    - xform/iu$/Ⓠ/
+    - xform/(.)ei$/$1Ⓦ/
+    - xform/uan$/Ⓡ/
+    - xform/[uv]e$/Ⓣ/
+    - xform/un$/Ⓨ/
+    - xform/^sh/Ⓤ/
+    - xform/^ch/Ⓘ/
+    - xform/^zh/Ⓥ/
+    - xform/uo$/Ⓞ/
+    - xform/ie$/Ⓟ/
+    - xform/(.)i?ong$/$1Ⓢ/
+    - xform/ing$|uai$/Ⓚ/
+    - xform/(.)ai$/$1Ⓓ/
+    - xform/(.)en$/$1Ⓕ/
+    - xform/(.)eng$/$1Ⓖ/
+    - xform/[iu]ang$/Ⓛ/
+    - xform/(.)ang$/$1Ⓗ/
+    - xform/ian$/Ⓜ/
+    - xform/(.)an$/$1Ⓙ/
+    - xform/(.)ou$/$1Ⓩ/
+    - xform/[iu]a$/Ⓧ/
+    - xform/iao$/Ⓝ/
+    - xform/(.)ao$/$1Ⓒ/
+    - xform/ui$/Ⓥ/
+    - xform/in$/Ⓑ/
+    - xlit/ⓆⓌⓇⓉⓎⓊⒾⓄⓅⓈⒹⒻⒼⒽⒿⓀⓁⓏⓍⒸⓋⒷⓃⓂ/qwrtyuiopsdfghjklzxcvbnm/
