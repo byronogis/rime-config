@@ -29,8 +29,9 @@ patch:
   reverse_lookup/prefix: uU
   recognizer/patterns/reverse_lookup: "^uU[a-z]*'?$"
 
-  # 词库
-  translator/dictionary: byrons
+  translator/+:
+    dictionary: byrons # 词库
+    preedit_format: [] # 上屏时不转换
 
   # 自定义短语
   custom_phrase:
