@@ -1,0 +1,5 @@
+patch:
+  app_options: {} # 置空内置的程序自动切换语言
+
+  style/inline_preedit: true
+  style/show_paging: true
