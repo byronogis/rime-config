@@ -2,6 +2,8 @@ patch:
   ascii_composer/good_old_caps_lock: true
   ascii_composer/switch_key: {}
 
+  schema_list/@before 0/schema: double_pinyin_flypy
+
   switcher/hotkeys:
     - F4
 
