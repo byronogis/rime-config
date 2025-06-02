@@ -18,6 +18,6 @@ patch:
         __append:
           - { when: always, accept: Control+comma, toggle: full_shape } # ,
           - { when: always, accept: Control+period, toggle: ascii_punct } # .
-          - { when: always, accept: Control+slash, toggle: simplification } # /
+          # - { when: always, accept: Control+slash, toggle: simplification } # /
           - { when: always, accept: Control+backslash, toggle: ascii_mode } # \
 
