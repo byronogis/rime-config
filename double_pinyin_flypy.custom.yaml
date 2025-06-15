@@ -24,7 +24,7 @@ patch:
   # Credit: https://github.com/HowcanoeWang/rime-lua-aux-code
   engine/filters/+:
     - lua_filter@*aux_code@flypy_full
-  speller/alphabet: zyxwvutsrqponmlkjihgfedcba;
+  speller/alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA;
 
   # 符号扩展改为 V 开头
   recognizer/patterns/punct: "^V([0-9]0?|[A-Za-z]+)$"
