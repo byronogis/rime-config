@@ -37,8 +37,6 @@ patch:
 
   translator/+:
     dictionary: byrons # 词库
-    preedit_format:
-      - 'xform/ //' # 移除空格, 避免切换至ABC输入法时中间带入空格
 
   # 自定义短语
   custom_phrase:
