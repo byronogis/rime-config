@@ -1,3 +1,5 @@
 build
 sync
 *.userdb
+
+.DS_Store
